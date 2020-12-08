@@ -1,2 +1,2 @@
-# kalkulator-fotowoltaiki
-Kalkulator dla fotowoltaiki
+# Kalkulator fotowoltaiki (Vue.js 3)
+Kalkulator z wyliczeniami dla fotowoltaiki
