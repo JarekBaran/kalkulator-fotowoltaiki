@@ -94,30 +94,15 @@
                   <option>Północny Zachód (NW)</option>
                 </select>
               </div>
-              <p>Nachylenie instalacji</p>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" name="roof-slope" id="roof-slope-0" class="custom-control-input">
-                <label class="custom-control-label" for="roof-slope-0">0%</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" name="roof-slope" id="roof-slope-15" class="custom-control-input">
-                <label class="custom-control-label" for="roof-slope-15">15%</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" name="roof-slope" id="roof-slope-30" class="custom-control-input">
-                <label class="custom-control-label" for="roof-slope-30">30%</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" name="roof-slope" id="roof-slope-45" class="custom-control-input">
-                <label class="custom-control-label" for="roof-slope-45">45%</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" name="roof-slope" id="roof-slope-60" class="custom-control-input">
-                <label class="custom-control-label" for="roof-slope-60">60%</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" name="roof-slope" id="roof-slope-75" class="custom-control-input">
-                <label class="custom-control-label" for="roof-slope-75">75%</label>
+              <div class="form-group">
+                <label for="roof-orientation">Nachylenie instalacji</label>
+                <select class="form-control" id="roof-orientation">
+                  <option>15%</option>
+                  <option>30%</option>
+                  <option>45%</option>
+                  <option>60%</option>
+                  <option>75%</option>
+                </select>
               </div>
             </div>
           </div>
@@ -125,18 +110,27 @@
       </div>
       <div class="card-group col-sm-12 col-lg-8">
         <div id="pv-installation" class="col-sm-12 col-lg-6">
-          <div class="card text-white bg-info shadow mb-3">
+          <div class="card text-white bg-warning shadow mb-3">
             <div class="card-body">
               <h2 class="card-title h5">Twoje zapotrzebowanie na energię elektryczną</h2>
               <p>Wielkość instalacji <span class="badge badge-light">6.48 kWp</span></p>
               <p>Inwerter <span class="badge badge-light">6 kW</span></p>
               <p>Ilość paneli <span class="badge badge-light">12</span></p>
               <p>Powierzchnia dachu <span class="badge badge-light">46.464 m2</span></p>
-              <p>Co pozwala wyprodukować roczne <span class="badge badge-light">6 221 kW</span></p>
+              <p>Co pozwala wyprodukować rocznie <span class="badge badge-light">6 221 kW</span></p>
               <p>Koszt instalacji <span class="badge badge-light">26 663 zł</span></p>
-              <p>Koszt z dotacją Mój prąd <span class="badge badge-light">21 663 zł</span></p>
-              <p>Koszt z dotacją Czyste powietrze <span class="badge badge-light">21 663 zł</span></p>
-              <p>Koszt z ulgą termomodernizacyjną <span class="badge badge-light">21 663 zł</span></p>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="dotation1">
+                <label class="custom-control-label" for="dotation1">Z dotacją Mój prąd <span class="badge badge-light">21 663 zł</span></label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="dotation2">
+                <label class="custom-control-label" for="dotation2">Z dotacją Czyste powietrze <span class="badge badge-light">21 663 zł</span></label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="dotation3">
+                <label class="custom-control-label" for="dotation3">Z ulgą termomodernizacyjną <span class="badge badge-light">21 663 zł</span></label>
+              </div>
             </div>
           </div>
         </div>
@@ -168,10 +162,23 @@
         </div>
 
         <div id="pv-production" class="col-sm-12">
-          <div class="card text-white bg-warning shadow mb-3">
+          <div class="card text-white bg-light shadow mb-3">
             <div class="card-body">
-              <h2 class="card-title h5">Produkcja energii elektrycznej</h2>
-              <p>CHART miesięczne słupki produkcji</p>
+              <h2 class="card-title h5 text-dark">Produkcja energii elektrycznej</h2>
+              <div class="chart">
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 25%"><span class="px-3 text-left">Styczeń</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 35%"><span class="px-3 text-left">Luty</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 50%"><span class="px-3 text-left">Marzec</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 65%"><span class="px-3 text-left">Kwiecień</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 70%"><span class="px-3 text-left">Maj</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 80%"><span class="px-3 text-left">Czerwiec</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 85%"><span class="px-3 text-left">Lipiec</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 75%"><span class="px-3 text-left">Sierpień</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 60%"><span class="px-3 text-left">Wrzesień</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 45%"><span class="px-3 text-left">Październik</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 35%"><span class="px-3 text-left">Listopad</span></div>
+                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 25%"><span class="px-3 text-left">Grudzień</span></div>
+              </div>
             </div>
           </div>
         </div>
