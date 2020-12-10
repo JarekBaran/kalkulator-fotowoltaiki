@@ -18,22 +18,22 @@
 
       <div class="card-group col-sm-12 col-lg-4">
         <div id="pv-bill" class="col-sm-12">
-          <div class="card text-white bg-primary shadow mb-3">
-            <div class="card-body">
-              <h2 class="card-title h5">Jakie są Twoje rachunki za energię eletryczną?</h2>
-              <p>Kwota miesięczna z rachunku za prąd</p>
-              <div class="input-group">
-                <input id="monthly-bill" class="form-control" type="number" value="300">
+          <div class="card bg-primary shadow mb-3">
+            <div class="card-body text-white">
+              <h2 class="card-title h5 pb-1">Jakie są Twoje rachunki za energię eletryczną?</h2>
+              <p class="border-bottom">Kwota miesięczna z rachunku za prąd</p>
+              <div class="input-group input-group-sm">
+                <input id="monthly-bill" class="form-control form-control-sm" type="number" value="300">
                 <div class="input-group-append">
                   <span class="input-group-text">
                     zł brutto
                   </span>
                 </div>
-                <input type="range" class="form-control-range" id="monthly-bill-range">
+                <input type="range" class="form-control-range my-3" id="monthly-bill-range">
               </div>
               <div class="form-group">
                 <label for="operator">Operator</label>
-                <select class="form-control" id="operator">
+                <select class="form-control form-control-sm" id="operator">
                   <option>Enea</option>
                   <option>Energa</option>
                   <option>Tauron</option>
@@ -41,22 +41,22 @@
                   <option>Innogy</option>
                 </select>
               </div>
-              <p>Koszt 1 kWh energii <span class="badge badge-light">0.6 zł</span></p>
-              <p>Zużycie miesięczne <span class="badge badge-light">500 kW</span></p>
-              <p>Zużycie roczne <span class="badge badge-light">6 000 kW</span></p>
-              <p>Rachunek rocznie <span class="badge badge-light">3600 zł</span></p>
+              <p class="border-bottom">Koszt 1 kWh energii <span class="badge badge-light float-right">0.6 zł</span></p>
+              <p class="border-bottom">Zużycie miesięczne <span class="badge badge-light float-right">500 kW</span></p>
+              <p class="border-bottom">Zużycie roczne <span class="badge badge-light float-right">6 000 kW</span></p>
+              <p class="border-bottom">Rachunek rocznie <span class="badge badge-light float-right">3600 zł</span></p>
             </div>
           </div>
         </div>
 
 
         <div id="pv-parameters" class="col-sm-12">
-          <div class="card text-white bg-danger shadow mb-3">
-            <div class="card-body">
-              <h3 class="card-title h5">Parametry instalacji</h3>
+          <div class="card bg-danger shadow mb-3">
+            <div class="card-body text-white">
+              <h3 class="card-title h5 pb-1">Parametry instalacji</h3>
               <div class="form-group">
                 <label for="installation on">Instalacja na</label>
-                <select class="form-control" id="installation on">
+                <select class="form-control form-control-sm" id="installation on">
                   <option>budynku mieszkalnym</option>
                   <option>garaż poza domem</option>
                   <option>innym</option>
@@ -65,7 +65,7 @@
               </div>
               <div class="form-group">
                 <label for="installation">Instalacja</label>
-                <select class="form-control" id="installation">
+                <select class="form-control form-control-sm" id="installation">
                   <option>dach skośny</option>
                   <option>dach płaski</option>
                   <option>grunt</option>
@@ -73,7 +73,7 @@
               </div>
               <div class="form-group">
                 <label for="roof-material">Pokrycie dachu</label>
-                <select class="form-control" id="roof-material">
+                <select class="form-control form-control-sm" id="roof-material">
                   <option>dach płaski</option>
                   <option>dachówka</option>
                   <option>blachodachówka</option>
@@ -83,7 +83,7 @@
               </div>
               <div class="form-group">
                 <label for="roof-orientation">Orientacja dachu</label>
-                <select class="form-control" id="roof-orientation">
+                <select class="form-control form-control-sm" id="roof-orientation">
                   <option>Wschód (E)</option>
                   <option>Zachód (W)</option>
                   <option>Południe (S)</option>
@@ -95,8 +95,8 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="roof-orientation">Nachylenie instalacji</label>
-                <select class="form-control" id="roof-orientation">
+                <label for="roof-tilt">Nachylenie instalacji</label>
+                <select class="form-control form-control-sm" id="roof-tilt">
                   <option>15%</option>
                   <option>30%</option>
                   <option>45%</option>
@@ -110,61 +110,72 @@
       </div>
       <div class="card-group col-sm-12 col-lg-8">
         <div id="pv-installation" class="col-sm-12 col-lg-6">
-          <div class="card text-white bg-warning shadow mb-3">
-            <div class="card-body">
-              <h2 class="card-title h5">Twoje zapotrzebowanie na energię elektryczną</h2>
-              <p>Wielkość instalacji <span class="badge badge-light">6.48 kWp</span></p>
-              <p>Inwerter <span class="badge badge-light">6 kW</span></p>
-              <p>Ilość paneli <span class="badge badge-light">12</span></p>
-              <p>Powierzchnia dachu <span class="badge badge-light">46.464 m2</span></p>
-              <p>Co pozwala wyprodukować rocznie <span class="badge badge-light">6 221 kW</span></p>
-              <p>Koszt instalacji <span class="badge badge-light">26 663 zł</span></p>
+          <div class="card bg-info shadow mb-3">
+            <div class="card-body text-white">
+              <h2 class="card-title h5 pb-1">Twoje zapotrzebowanie na energię elektryczną</h2>
+              <p class="border-bottom">Wielkość instalacji <span class="badge badge-light float-right">6.48 kWp</span></p>
+              <p class="border-bottom">Moc inwertera <span class="badge badge-light float-right">6 kW</span></p>
+              <div class="form-group">
+                <label for="pv-module">Moc paneli</label>
+                <select class="form-control form-control-sm" id="pv-module">
+                  <option>280W</option>
+                  <option>330W</option>
+                  <option>350W</option>
+                  <option>380W</option>
+                </select>
+              </div>
+              <p class="border-bottom">Ilość paneli <span class="badge badge-light float-right">12</span></p>
+              <p class="border-bottom">Powierzchnia dachu <span class="badge badge-light float-right">46.464 m2</span></p>
+              <p class="border-bottom">Produkcja roczna <span class="badge badge-light float-right">6 221 kW</span></p>
+              <p class="border-bottom">Koszt instalacji <span class="badge badge-light float-right">26 663 zł</span></p>
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="dotation1">
-                <label class="custom-control-label" for="dotation1">Z dotacją Mój prąd <span class="badge badge-light">21 663 zł</span></label>
+                <label class="custom-control-label" for="dotation1">Z dotacją Mój prąd</label>
+                <span class="badge badge-light float-right">21 663 zł</span>
               </div>
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="dotation2">
-                <label class="custom-control-label" for="dotation2">Z dotacją Czyste powietrze <span class="badge badge-light">21 663 zł</span></label>
+                <label class="custom-control-label" for="dotation2">Z dotacją Czyste powietrze</label>
+                <span class="badge badge-light float-right">21 663 zł</span>
               </div>
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="dotation3">
-                <label class="custom-control-label" for="dotation3">Z ulgą termomodernizacyjną <span class="badge badge-light">21 663 zł</span></label>
+                <label class="custom-control-label" for="dotation3">Z ulgą termomodernizacyjną</label>
+                <span class="badge badge-light float-right">21 663 zł</span>
               </div>
             </div>
           </div>
         </div>
 
         <div id="pv-saving" class="col-sm-12 col-lg-6">
-          <div class="card text-white bg-success shadow mb-3">
-            <div class="card-body">
-              <h2 class="card-title h5">Oszczędność z instalacją fotowoltaiczną</h2>
-              <p>Roczny rachunek z instalacją fotowoltaiczną <span class="badge badge-light">265.38 zł</span></p>
-              <p>Roczny wzrost cen prądu na poziomie</span>
-              <div class="input-group">
-                <input id="increase-energy" class="form-control" type="number" value="3">
+          <div class="card bg-success shadow mb-3">
+            <div class="card-body text-white">
+              <h2 class="card-title h5 pb-1">Oszczędność z instalacją fotowoltaiczną</h2>
+              <p class="border-bottom">Rachunek za rok z fotowoltaiką <span class="badge badge-light float-right">265.38 zł</span></p>
+              <p class="border-bottom">Roczny wzrost cen prądu na poziomie</p>
+              <div class="input-group input-group-sm">
+                <input id="increase-energy" class="form-control form-control-sm" type="number" value="3">
                 <div class="input-group-append">
                   <span class="input-group-text">
                     %
                   </span>
                 </div>
-                <input type="range" class="form-control-range" id="increase-energy-range">
+                <input type="range" class="form-control-range my-3" id="increase-energy-range">
               </div>
-              <p>Oszczędność roczna <span class="badge badge-light">4356 zł</span></p>
-              <p>Oszczędności przez 5 lat <span class="badge badge-light">19 925 zł</span></p>
-              <p>Oszczędności przez 8 lat <span class="badge badge-light">32 925 zł</span></p>
-              <p>Oszczędności przez 12 lat <span class="badge badge-light">49 925 zł</span></p>
-              <p>Oszczędności przez 15 lat <span class="badge badge-light">59 925 zł</span></p>
-              <p>Oszczędności przez 20 lat <span class="badge badge-light">79 925 zł</span></p>
-              <p>Zwrot inwestycji <span class="badge badge-light">ok. 12 lat</span></p>
+              <p class="border-bottom">Oszczędność roczna <span class="badge badge-light float-right">4356 zł</span></p>
+              <p class="border-bottom">Oszczędności przez 5 lat <span class="badge badge-light float-right">19 925 zł</span></p>
+              <p class="border-bottom">Oszczędności przez 8 lat <span class="badge badge-light float-right">32 925 zł</span></p>
+              <p class="border-bottom">Oszczędności przez 12 lat <span class="badge badge-light float-right">49 925 zł</span></p>
+              <p class="border-bottom">Oszczędności przez 15 lat <span class="badge badge-light float-right">59 925 zł</span></p>
+              <p class="border-bottom">Zwrot inwestycji <span class="badge badge-light float-right">ok. 12 lat</span></p>
             </div>
           </div>
         </div>
 
         <div id="pv-production" class="col-sm-12">
-          <div class="card text-white bg-light shadow mb-3">
-            <div class="card-body">
-              <h2 class="card-title h5 text-dark">Produkcja energii elektrycznej</h2>
+          <div class="card bg-light shadow mb-3">
+            <div class="card-body text-white">
+              <h2 class="card-title h5 pb-1 text-dark">Produkcja energii elektrycznej</h2>
               <div class="chart">
                 <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 25%"><span class="px-3 text-left">Styczeń</span></div>
                 <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 35%"><span class="px-3 text-left">Luty</span></div>
