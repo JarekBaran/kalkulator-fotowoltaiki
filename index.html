@@ -23,25 +23,23 @@
               <h2 class="card-title h5 pb-1">Jakie są Twoje rachunki za energię eletryczną?</h2>
               <p class="border-bottom">Kwota miesięczna z rachunku za prąd</p>
               <div class="input-group input-group-sm">
-                <input id="monthly-bill" class="form-control form-control-sm" type="number" value="300">
+                <input type="number" id="monthly-bill" v-model.number="pvBill.monthlyBill" @keyup="calculation" required  class="form-control form-control-sm">
                 <div class="input-group-append">
                   <span class="input-group-text">
                     zł brutto
                   </span>
                 </div>
-                <input type="range" class="form-control-range my-3" id="monthly-bill-range">
+                <input type="range" min="10" max="1000" step="10" id="monthly-bill-range" v-model.number="pvBill.monthlyBill" @change="calculation" class="form-control-range my-3">
               </div>
               <div class="form-group">
-                <label for="operator">Operator</label>
-                <select class="form-control form-control-sm" id="operator">
-                  <option>Enea</option>
-                  <option>Energa</option>
-                  <option>Tauron</option>
-                  <option>PGE</option>
-                  <option>Innogy</option>
+                <label for="operators">Operator</label>
+                <select id="operators" v-model="pvBill.energyPrice" @change="calculation" class="form-control form-control-sm">
+                  <option v-for="operator in pvBill.operators" :value="operator.energyPrice">
+                    {{ operator.name }}
+                  </option>
                 </select>
               </div>
-              <p class="border-bottom">Koszt 1 kWh energii <span class="badge badge-light float-right">0.6 zł</span></p>
+              <p id="energy-price" class="border-bottom">Koszt 1 kWh energii <span class="badge badge-light float-right"> {{ pvBill.energyPrice }} zł</span></p>
               <p class="border-bottom">Zużycie miesięczne <span class="badge badge-light float-right">500 kW</span></p>
               <p class="border-bottom">Zużycie roczne <span class="badge badge-light float-right">6 000 kW</span></p>
               <p class="border-bottom">Rachunek rocznie <span class="badge badge-light float-right">3600 zł</span></p>
