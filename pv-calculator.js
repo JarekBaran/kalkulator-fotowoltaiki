@@ -3,7 +3,7 @@ const pvCalculator = Vue.createApp({
     return {
       pvBill: {
         monthlyBill: 300,
-        energyPrice: 0,
+        energyPrice: 0.64,
         operators: [
           { name: 'PGE', energyPrice: '0.64' },
           { name: 'Enea', energyPrice: '0.59' },
@@ -14,9 +14,17 @@ const pvCalculator = Vue.createApp({
       }
     }
   },
+  computed: {
+    yearlyBill() {
+      return this.pvBill.monthlyBill * 12;
+    } 
+  },
   methods: {
+    energyConsumption(months) {
+      return Math.round((this.pvBill.monthlyBill / this.pvBill.energyPrice) * months);
+    },
     calculation() {
-      console.log('CALCULATION');
+      return console.log('CALCULATION');
     }
   }
 });

@@ -40,9 +40,9 @@
                 </select>
               </div>
               <p id="energy-price" class="border-bottom">Koszt 1 kWh energii <span class="badge badge-light float-right"> {{ pvBill.energyPrice }} zł</span></p>
-              <p class="border-bottom">Zużycie miesięczne <span class="badge badge-light float-right">500 kW</span></p>
-              <p class="border-bottom">Zużycie roczne <span class="badge badge-light float-right">6 000 kW</span></p>
-              <p class="border-bottom">Rachunek rocznie <span class="badge badge-light float-right">3600 zł</span></p>
+              <p id="energy-consumption-monthly" class="border-bottom">Zużycie miesięczne <span class="badge badge-light float-right"> {{ energyConsumption(1) }} kWh</span></p>
+              <p id="energy-consumption-yearly" class="border-bottom">Zużycie roczne <span class="badge badge-light float-right"> {{ energyConsumption(12) }} kWh</span></p>
+              <p id="yearly-bill" class="border-bottom">Rachunek rocznie <span class="badge badge-light float-right"> {{ yearlyBill }} zł</span></p>
             </div>
           </div>
         </div>
