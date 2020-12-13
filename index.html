@@ -17,23 +17,24 @@
     <div id="pv-calculator" class="row">
 
       <div class="card-group col-sm-12 col-lg-4">
+
         <div id="pv-bill" class="col-sm-12">
           <div class="card bg-primary shadow mb-3">
             <div class="card-body text-white">
               <h2 class="card-title h5 pb-1">Jakie są Twoje rachunki za energię eletryczną?</h2>
               <p class="border-bottom">Kwota miesięczna z rachunku za prąd</p>
               <div class="input-group input-group-sm">
-                <input type="number" id="monthly-bill" v-model.number="pvBill.monthlyBill" @keyup="calculation" required  class="form-control form-control-sm">
+                <input type="number" id="monthly-bill" v-model.number="pvBill.monthlyBill" required  class="form-control form-control-sm">
                 <div class="input-group-append">
                   <span class="input-group-text">
                     zł brutto
                   </span>
                 </div>
-                <input type="range" min="10" max="1000" step="10" id="monthly-bill-range" v-model.number="pvBill.monthlyBill" @change="calculation" class="form-control-range my-3">
+                <input type="range" min="10" max="1000" step="10" id="monthly-bill-range" v-model.number="pvBill.monthlyBill" class="form-control-range my-3">
               </div>
               <div class="form-group">
                 <label for="operators">Operator</label>
-                <select id="operators" v-model="pvBill.energyPrice" @change="calculation" class="form-control form-control-sm">
+                <select id="operators" v-model="pvBill.energyPrice" class="form-control form-control-sm">
                   <option v-for="operator in pvBill.operators" :value="operator.energyPrice">
                     {{ operator.name }}
                   </option>
@@ -53,53 +54,35 @@
             <div class="card-body text-white">
               <h3 class="card-title h5 pb-1">Parametry instalacji</h3>
               <div class="form-group">
-                <label for="installation on">Instalacja na</label>
-                <select class="form-control form-control-sm" id="installation on">
-                  <option>budynku mieszkalnym</option>
-                  <option>garaż poza domem</option>
-                  <option>innym</option>
-                  <option>gruncie</option>
+                <label for="installation-place">Instalacja na</label>
+                <select id="installation-place" v-model="pvParameters.installationTax" class="form-control form-control-sm">
+                  <option v-for="installation in pvParameters.installationPlace" :value="installation.tax">
+                    {{ installation.place }}
+                  </option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="installation">Instalacja</label>
-                <select class="form-control form-control-sm" id="installation">
-                  <option>dach skośny</option>
-                  <option>dach płaski</option>
-                  <option>grunt</option>
+                <label for="installation-mounted">Konstrukcja montowana na</label>
+                <select id="installation-mounted" v-model="pvParameters.mountedCost" class="form-control form-control-sm">
+                  <option v-for="mounted in pvParameters.installatioMounted" :value="mounted.cost">
+                    {{ mounted.on }}
+                  </option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="roof-material">Pokrycie dachu</label>
-                <select class="form-control form-control-sm" id="roof-material">
-                  <option>dach płaski</option>
-                  <option>dachówka</option>
-                  <option>blachodachówka</option>
-                  <option>gont</option>
-                  <option>inne</option>
+                <label for="installation-orientation">Orientacja instalacji</label>
+                <select id="installation-orientation" v-model="pvParameters.orientationSunProfit" class="form-control form-control-sm">
+                  <option v-for="orientation in pvParameters.installationOrientation" :value="orientation.sunProfit">
+                    {{ orientation.direction }}
+                  </option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="roof-orientation">Orientacja dachu</label>
-                <select class="form-control form-control-sm" id="roof-orientation">
-                  <option>Wschód (E)</option>
-                  <option>Zachód (W)</option>
-                  <option>Południe (S)</option>
-                  <option>Południowy Wschód (SE)</option>
-                  <option>Południowy Zachód (SW)</option>
-                  <option>Północ (N)</option>
-                  <option>Północny Wschód (NE)</option>
-                  <option>Północny Zachód (NW)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="roof-tilt">Nachylenie instalacji</label>
-                <select class="form-control form-control-sm" id="roof-tilt">
-                  <option>15%</option>
-                  <option>30%</option>
-                  <option>45%</option>
-                  <option>60%</option>
-                  <option>75%</option>
+                <label for="installation-tilt">Nachylenie instalacji</label>
+                <select id="installation-tilt" v-model="pvParameters.installationPerformance" class="form-control form-control-sm">
+                  <option v-for="tilt in pvParameters.installationTilt" :value="tilt.performance">
+                    {{ tilt.percent }}
+                  </option>
                 </select>
               </div>
             </div>
