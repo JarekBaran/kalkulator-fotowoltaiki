@@ -1,6 +1,8 @@
 const pvCalculator = Vue.createApp({
   data() {
     return {
+      energyBackFromGrid: 0.8,
+      energyReserveRatio: 1.4,
       pvBill: {
         monthlyBill: 300,
         energyPrice: 0.64,
@@ -47,18 +49,41 @@ const pvCalculator = Vue.createApp({
           { percent: '60%', performance: 0.8 },
           { percent: '75%', performance: 0.6 },
         ],
+      },
+      pvInstallation: {
+        invertersPower: [0.3,1.2,2,3.2,4,5,6,8,10,12,15,20,25,30,40,50,60,80],
+        pvModule: { power: 335, height: 0.34, width: 0.98 },
+        pvModules: [
+          { power: 280, height: 0.34, width: 0.98 },
+          { power: 335, height: 0.34, width: 0.98 },
+          { power: 350, height: 0.34, width: 0.98 },
+          { power: 380, height: 0.34, width: 0.98 },
+          { power: 425, height: 0.34, width: 0.98 },
+        ]
       }
     }
   },
   computed: {
     yearlyBill() {
       return this.pvBill.monthlyBill * 12;
-    } 
+    },
+    installationPower() {
+      return ((this.energyConsumption(12) * (this.energyBackFromGrid * this.energyReserveRatio)) / 1000).toFixed(3);
+    },
+    inverterPower() {
+      return this.pvInstallation.invertersPower.filter((power) => power <= (this.installationPower)).pop();
+    },
+    numberOfModules() {
+      return Math.ceil((this.installationPower * 1000) / this.pvInstallation.pvModule.power);
+    },
+    installationArea() {
+      return (this.pvInstallation.pvModule.height * (this.pvInstallation.pvModule.width * this.numberOfModules)).toFixed(2);
+    }
   },
   methods: {
     energyConsumption(months) {
-      return Math.round((this.pvBill.monthlyBill / this.pvBill.energyPrice) * months);
-    },
+      return Math.round((this.pvBill.monthlyBill / this.pvBill.energyPrice ) * months);
+    }
   }
 });
 

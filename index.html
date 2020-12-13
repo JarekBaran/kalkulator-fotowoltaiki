@@ -48,7 +48,6 @@
           </div>
         </div>
 
-
         <div id="pv-parameters" class="col-sm-12">
           <div class="card bg-danger shadow mb-3">
             <div class="card-body text-white">
@@ -94,19 +93,18 @@
           <div class="card bg-info shadow mb-3">
             <div class="card-body text-white">
               <h2 class="card-title h5 pb-1">Twoje zapotrzebowanie na energię elektryczną</h2>
-              <p class="border-bottom">Wielkość instalacji <span class="badge badge-light float-right">6.48 kWp</span></p>
-              <p class="border-bottom">Moc inwertera <span class="badge badge-light float-right">6 kW</span></p>
+              <p class="border-bottom">Wielkość instalacji <span class="badge badge-light float-right"> {{ installationPower }} kWp</span></p>
+              <p class="border-bottom">Moc inwertera <span class="badge badge-light float-right"> {{ inverterPower }} kW</span></p>
               <div class="form-group">
-                <label for="pv-module">Moc paneli</label>
-                <select class="form-control form-control-sm" id="pv-module">
-                  <option>280W</option>
-                  <option>330W</option>
-                  <option>350W</option>
-                  <option>380W</option>
+                <label for="pv-modules">Moc paneli</label>
+                <select id="pv-modules" v-model="pvInstallation.pvModule" class="form-control form-control-sm">
+                  <option v-for="pvModule in pvInstallation.pvModules" :value="pvModule">
+                    {{ pvModule.power }}W
+                  </option>
                 </select>
               </div>
-              <p class="border-bottom">Ilość paneli <span class="badge badge-light float-right">12</span></p>
-              <p class="border-bottom">Powierzchnia dachu <span class="badge badge-light float-right">46.464 m2</span></p>
+              <p class="border-bottom">Ilość paneli <span class="badge badge-light float-right"> {{ numberOfModules }} </span></p>
+              <p class="border-bottom">Powierzchnia instalacji <span class="badge badge-light float-right"> {{ installationArea }} m2</span></p>
               <p class="border-bottom">Produkcja roczna <span class="badge badge-light float-right">6 221 kW</span></p>
               <p class="border-bottom">Koszt instalacji <span class="badge badge-light float-right">26 663 zł</span></p>
               <div class="custom-control custom-checkbox">
