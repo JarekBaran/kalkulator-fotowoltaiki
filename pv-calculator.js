@@ -3,15 +3,16 @@ const pvCalculator = Vue.createApp({
     return {
       energyBackFromGrid: 0.8,
       energyReserveRatio: 1.4,
+      energyYearPerKw: 955,
       pvBill: {
         monthlyBill: 300,
         energyPrice: 0.64,
         operators: [
-          { name: 'PGE', energyPrice: '0.64' },
-          { name: 'Enea', energyPrice: '0.59' },
-          { name: 'Energa', energyPrice: '0.67' },
-          { name: 'Tauron', energyPrice: '0.60' },
-          { name: 'Innogy', energyPrice: '0.58' },
+          { name: 'PGE', energyPrice: 0.64 },
+          { name: 'Enea', energyPrice: 0.59 },
+          { name: 'Energa', energyPrice: 0.67 },
+          { name: 'Tauron', energyPrice: 0.60 },
+          { name: 'Innogy', energyPrice: 0.58 },
         ]
       },
       pvParameters: {
@@ -30,35 +31,36 @@ const pvCalculator = Vue.createApp({
           { on: 'gont dachowy', cost: 0.9 },
           { on: 'inny materiał', cost: 1.2 },
         ],
-        orientationSunProfit: 1,
+        orientationSunProfit: 0.95,
         installationOrientation: [
-          { direction: 'Wschód (E)', sunProfit: 0.7 },
-          { direction: 'Zachód (W)', sunProfit: 0.7 },
-          { direction: 'Południe (S)', sunProfit: 1 },
+          { direction: 'Wschód (E)', sunProfit: 0.6 },
+          { direction: 'Zachód (W)', sunProfit: 0.6 },
+          { direction: 'Południe (S)', sunProfit: 0.95 },
           { direction: 'Południowy Wschód (SE)', sunProfit: 0.8 },
           { direction: 'Południowy Zachód (SW)', sunProfit: 0.9 },
-          { direction: 'Północ (N)', sunProfit: 0.5 },
-          { direction: 'Północny Wschód (NE)', sunProfit: 0.6 },
-          { direction: 'Północny Zachód (NW)', sunProfit: 0.6 },
+          { direction: 'Północ (N)', sunProfit: 0.4 },
+          { direction: 'Północny Wschód (NE)', sunProfit: 0.5 },
+          { direction: 'Północny Zachód (NW)', sunProfit: 0.5 },
         ],
-        installationPerformance: 1,
+        installationPerformance: 0.95,
         installationTilt: [
-          { percent: '15%', performance: 0.7 },
-          { percent: '30%', performance: 1 },
+          { percent: '15%', performance: 0.85 },
+          { percent: '30%', performance: 0.95 },
           { percent: '45%', performance: 0.9 },
-          { percent: '60%', performance: 0.8 },
+          { percent: '60%', performance: 0.7 },
           { percent: '75%', performance: 0.6 },
         ],
       },
       pvInstallation: {
-        invertersPower: [0.3,1.2,2,3.2,4,5,6,8,10,12,15,20,25,30,40,50,60,80],
-        pvModule: { power: 335, height: 0.34, width: 0.98 },
+        invertersPower: [0.1,0.3,0.8,1.2,2,3.2,4,5,6,8,10,12,15,20,25,30,40,50,60,80],
+        pvModule: { power: 330, height: 1.665, width: 1.005 },
         pvModules: [
-          { power: 280, height: 0.34, width: 0.98 },
-          { power: 335, height: 0.34, width: 0.98 },
-          { power: 350, height: 0.34, width: 0.98 },
-          { power: 380, height: 0.34, width: 0.98 },
-          { power: 425, height: 0.34, width: 0.98 },
+          { power: 280, height: 1.650, width: 0.992 },
+          { power: 330, height: 1.665, width: 1.005 },
+          { power: 365, height: 1.825, width: 1.005 },
+          { power: 390, height: 1.990, width: 1.005 },
+          { power: 440, height: 2.115, width: 1.052 },
+          { power: 480, height: 2.115, width: 1.052 },
         ]
       }
     }
@@ -78,6 +80,9 @@ const pvCalculator = Vue.createApp({
     },
     installationArea() {
       return (this.pvInstallation.pvModule.height * (this.pvInstallation.pvModule.width * this.numberOfModules)).toFixed(2);
+    },
+    yearProduction() {
+      return (this.installationPower * this.energyYearPerKw * (this.pvParameters.orientationSunProfit * this.pvParameters.installationPerformance)).toFixed(3);
     }
   },
   methods: {
