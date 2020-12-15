@@ -53,14 +53,14 @@ const pvCalculator = Vue.createApp({
       },
       pvInstallation: {
         invertersPower: [0.1,0.3,0.8,1.2,2,3.2,4,5,6,8,10,12,15,20,25,30,40,50,60,80],
-        pvModule: { power: 330, height: 1.665, width: 1.005 },
+        pvModule: { power: 330, height: 1.665, width: 1.005, costPerKw: 3900 },
         pvModules: [
-          { power: 280, height: 1.650, width: 0.992 },
-          { power: 330, height: 1.665, width: 1.005 },
-          { power: 365, height: 1.825, width: 1.005 },
-          { power: 390, height: 1.990, width: 1.005 },
-          { power: 440, height: 2.115, width: 1.052 },
-          { power: 480, height: 2.115, width: 1.052 },
+          { power: 280, height: 1.650, width: 0.992, costPerKw: 3750 },
+          { power: 330, height: 1.665, width: 1.005, costPerKw: 3900 },
+          { power: 365, height: 1.825, width: 1.005, costPerKw: 4000 },
+          { power: 390, height: 1.990, width: 1.005, costPerKw: 4150 },
+          { power: 440, height: 2.115, width: 1.052, costPerKw: 4330 },
+          { power: 480, height: 2.115, width: 1.052, costPerKw: 4550 },
         ]
       }
     }
@@ -83,6 +83,9 @@ const pvCalculator = Vue.createApp({
     },
     yearProduction() {
       return (this.installationPower * this.energyYearPerKw * (this.pvParameters.orientationSunProfit * this.pvParameters.installationPerformance)).toFixed(3);
+    },
+    installationCost() {
+      return (this.installationPower * this.pvInstallation.pvModule.costPerKw).toFixed();
     }
   },
   methods: {
