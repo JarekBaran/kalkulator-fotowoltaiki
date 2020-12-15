@@ -13,11 +13,12 @@
 
   </head>
   <body class="container">
-    <h1 class="text-center h3 p-3">Kalkulator fotowoltaiczny - wyliczenia dla instalacji fotowoltaicznej</h1>
+    <h1 class="text-center h3 m-3">Kalkulator fotowoltaiczny - wyliczenia dla instalacji fotowoltaicznej</h1>
+    <div class="col-sm-10 offset-sm-1 text-center alert alert-danger">
+      <strong>Uwaga!</strong> Kalkulator zawiera orientacyjne dane demonstracyjne. Wyliczenia nie powinny być wykorzystywane do wycen. 
+    </div>
     <div id="pv-calculator" class="row">
-
       <div class="card-group col-sm-12 col-lg-4">
-
         <div id="pv-bill" class="col-sm-12">
           <div class="card bg-primary shadow mb-3">
             <div class="card-body text-white">
@@ -47,7 +48,6 @@
             </div>
           </div>
         </div>
-
         <div id="pv-parameters" class="col-sm-12">
           <div class="card bg-danger shadow mb-3">
             <div class="card-body text-white">
@@ -116,7 +116,6 @@
             </div>
           </div>
         </div>
-
         <div id="pv-saving" class="col-sm-12 col-lg-6">
           <div class="card bg-success shadow mb-3">
             <div class="card-body text-white">
@@ -141,7 +140,6 @@
             </div>
           </div>
         </div>
-
         <div id="pv-production" class="col-sm-12">
           <div class="card bg-light shadow mb-3">
             <div class="card-body text-white">
@@ -163,8 +161,7 @@
             </div>
           </div>
         </div>
-      
-
+      </div>
     </div>
     <script async defer src="pv-calculator.js"></script>
   </body>
