@@ -105,23 +105,14 @@
               </div>
               <p class="border-bottom">Ilość paneli <span class="badge badge-light float-right"> {{ numberOfModules }} </span></p>
               <p class="border-bottom">Powierzchnia instalacji <span class="badge badge-light float-right"> {{ installationArea }} m2</span></p>
-              <p class="border-bottom">Produkcja roczna <span class="badge badge-light float-right"> {{ yearProduction }} kW</span></p>
+              <p class="border-bottom">Produkcja roczna <span class="badge badge-light float-right"> {{ yearProduction }} kWh</span></p>
               <p class="border-bottom">Koszt instalacji <span class="badge badge-light float-right"> {{ installationCost }} zł</span></p>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="dotation1">
-                <label class="custom-control-label" for="dotation1">Z dotacją Mój prąd</label>
-                <span class="badge badge-light float-right">21 663 zł</span>
+              <div v-for="(grant, index) in pvInstallation.subsidies" :key="index" class="custom-control custom-checkbox">
+                <input type="checkbox" :id="index" v-model="grant.active" class="custom-control-input">
+                <label :for="index" class="custom-control-label"> {{ grant.name }} </label>
+                <span v-show="grant.active" class="badge badge-light float-right"> -{{ grant.discount }} zł</span>
               </div>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="dotation2">
-                <label class="custom-control-label" for="dotation2">Z dotacją Czyste powietrze</label>
-                <span class="badge badge-light float-right">21 663 zł</span>
-              </div>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="dotation3">
-                <label class="custom-control-label" for="dotation3">Z ulgą termomodernizacyjną</label>
-                <span class="badge badge-light float-right">21 663 zł</span>
-              </div>
+              <p v-show="installationCost != installationCostAfterGrant" class="border-bottom mt-2">Koszt po ulgach: <span class="badge badge-light float-right"> {{ installationCostAfterGrant }} zł</span></p>
             </div>
           </div>
         </div>

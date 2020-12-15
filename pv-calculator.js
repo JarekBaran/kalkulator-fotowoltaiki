@@ -61,6 +61,10 @@ const pvCalculator = Vue.createApp({
           { power: 390, height: 1.990, width: 1.005, costPerKw: 4150 },
           { power: 440, height: 2.115, width: 1.052, costPerKw: 4330 },
           { power: 480, height: 2.115, width: 1.052, costPerKw: 4550 },
+        ],
+        subsidies: [
+          { active: false, name: 'Z dotacją Mój prąd', discount: 5150 },
+          { active: false, name: 'Z dotacją Czyste powietrze', discount: 4950 },
         ]
       }
     }
@@ -82,10 +86,13 @@ const pvCalculator = Vue.createApp({
       return (this.pvInstallation.pvModule.height * (this.pvInstallation.pvModule.width * this.numberOfModules)).toFixed(2);
     },
     yearProduction() {
-      return (this.installationPower * this.energyYearPerKw * (this.pvParameters.orientationSunProfit * this.pvParameters.installationPerformance)).toFixed(3);
+      return (this.installationPower * this.energyYearPerKw * (this.pvParameters.orientationSunProfit * this.pvParameters.installationPerformance)).toFixed();
     },
     installationCost() {
       return (this.installationPower * this.pvInstallation.pvModule.costPerKw).toFixed();
+    },
+    installationCostAfterGrant() {
+      return this.installationCost - this.pvInstallation.subsidies.filter(grant => grant.active).reduce((discounts, grant) => discounts + grant.discount, 0);
     }
   },
   methods: {
