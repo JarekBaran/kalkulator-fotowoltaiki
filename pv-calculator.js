@@ -66,6 +66,9 @@ const pvCalculator = Vue.createApp({
           { active: false, name: 'Z dotacją Mój prąd', discount: 5150 },
           { active: false, name: 'Z dotacją Czyste powietrze', discount: 4950 },
         ]
+      },
+      pvSaving: {
+        yearlyIncreaseEnergyPrice: 3,
       }
     }
   },
