@@ -131,11 +131,11 @@
                 </div>
                 <input type="range" min="1" max="15" step="1" id="yearly-increase-energy-price-range" v-model.number="pvSaving.yearlyIncreaseEnergyPrice" class="form-control-range my-3">
               </div>
-              <p class="border-bottom">Oszczędność roczna <span class="badge badge-light float-right">4356 zł</span></p>
-              <p class="border-bottom">Oszczędności przez 5 lat <span class="badge badge-light float-right">19 925 zł</span></p>
-              <p class="border-bottom">Oszczędności przez 8 lat <span class="badge badge-light float-right">32 925 zł</span></p>
-              <p class="border-bottom">Oszczędności przez 12 lat <span class="badge badge-light float-right">49 925 zł</span></p>
-              <p class="border-bottom">Oszczędności przez 15 lat <span class="badge badge-light float-right">59 925 zł</span></p>
+              <p class="border-bottom">Oszczędność roczna <span class="badge badge-light float-right"> {{ pvBillSavings(1) }} zł</span></p>
+              <p class="border-bottom">Oszczędności przez 5 lat <span class="badge badge-light float-right">{{ pvBillSavings(5) }}zł</span></p>
+              <p class="border-bottom">Oszczędności przez 8 lat <span class="badge badge-light float-right">{{ pvBillSavings(8) }}zł</span></p>
+              <p class="border-bottom">Oszczędności przez 12 lat <span class="badge badge-light float-right">{{ pvBillSavings(12) }}zł</span></p>
+              <p class="border-bottom">Oszczędności przez 15 lat <span class="badge badge-light float-right">{{ pvBillSavings(15) }}zł</span></p>
               <p class="border-bottom">Zwrot inwestycji <span class="badge badge-light float-right">ok. 12 lat</span></p>
             </div>
           </div>

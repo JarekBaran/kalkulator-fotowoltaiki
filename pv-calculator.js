@@ -52,7 +52,7 @@ const pvCalculator = Vue.createApp({
         ],
       },
       pvInstallation: {
-        invertersPower: [0.1,0.3,0.8,1.2,2,3.2,4,5,6,8,10,12,15,20,25,30,40,50,60,80],
+        invertersPower: [0.1, 0.3, 0.8, 1.2, 2, 3.2, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30, 40, 50, 60, 80],
         pvModule: { power: 330, height: 1.665, width: 1.005, costPerKw: 3600 },
         pvModules: [
           { power: 280, height: 1.650, width: 0.992, costPerKw: 3450 },
@@ -98,13 +98,16 @@ const pvCalculator = Vue.createApp({
       return this.installationCost - this.pvInstallation.subsidies.filter(grant => grant.active).reduce((discounts, grant) => discounts + grant.discount, 0);
     },
     yearlyPvBill() {
-      const bill = ((this.energyConsumption(12) - this.yearProduction) * this.pvBill.energyPrice).toFixed(2);
+      const bill = ((this.energyConsumption(12) - this.yearProduction) * this.pvBill.energyPrice).toFixed();
       return (bill > 0) ? bill : 0;
     }
   },
   methods: {
     energyConsumption(months) {
-      return Math.round((this.pvBill.monthlyBill / this.pvBill.energyPrice ) * months);
+      return Math.round((this.pvBill.monthlyBill / this.pvBill.energyPrice) * months);
+    },
+    pvBillSavings(years) {
+      return ((this.yearlyBill - this.yearlyPvBill) * years).toFixed();
     }
   }
 });
