@@ -74,7 +74,7 @@ const pvCalculator = Vue.createApp({
       return this.pvBill.monthlyBill * 12;
     },
     installationPower() {
-      return ((this.energyConsumption(12) * (this.energyBackFromGrid * this.energyReserveRatio)) / 1000).toFixed(3);
+      return ((this.energyConsumption(12) * (this.energyBackFromGrid * this.energyReserveRatio)) / 1000).toFixed();
     },
     inverterPower() {
       return this.pvInstallation.invertersPower.filter((power) => power <= (this.installationPower)).pop();
@@ -93,6 +93,10 @@ const pvCalculator = Vue.createApp({
     },
     installationCostAfterGrant() {
       return this.installationCost - this.pvInstallation.subsidies.filter(grant => grant.active).reduce((discounts, grant) => discounts + grant.discount, 0);
+    },
+    yearlyPvBill() {
+      const bill = ((this.energyConsumption(12) - this.yearProduction) * this.pvBill.energyPrice).toFixed(2);
+      return (bill > 0) ? bill : 0;
     }
   },
   methods: {
