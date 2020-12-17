@@ -95,18 +95,23 @@ const pvCalculator = Vue.createApp({
       return ((this.installationPower * this.pvInstallation.pvModule.costPerKw * this.pvParameters.mountedCost) * ((this.pvParameters.installationTax / 100) + 1)).toFixed();
     },
     installationCostAfterGrant() {
-      return this.installationCost - this.pvInstallation.subsidies.filter(grant => grant.active).reduce((discounts, grant) => discounts + grant.discount, 0);
+      const grants = this.installationCost - this.pvInstallation.subsidies.filter(grant => grant.active).reduce((discounts, grant) => discounts + grant.discount, 0);
+      return (grants > 0) ? grants : 0;
     },
     yearlyPvBill() {
       const bill = ((this.energyConsumption(12) - this.yearProduction) * this.pvBill.energyPrice).toFixed();
       return (bill > 0) ? bill : 0;
+    },
+    returnOnInvestment() {
+      const investmentCost = (this.installationCost != this.installationCostAfterGrant) ? this.installationCostAfterGrant : this.installationCost;
+      return Math.ceil((investmentCost / (parseInt(this.yearlyBill, 10) + parseInt(this.yearlyPvBill, 10))));
     }
   },
   methods: {
-    energyConsumption(months) {
+    energyConsumption(months = 1) {
       return Math.round((this.pvBill.monthlyBill / this.pvBill.energyPrice) * months);
     },
-    pvBillSavings(years) {
+    pvBillSavings(years = 1) {
       return ((this.yearlyBill - this.yearlyPvBill) * years).toFixed();
     }
   }
