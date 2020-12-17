@@ -112,7 +112,13 @@ const pvCalculator = Vue.createApp({
       return Math.round((this.pvBill.monthlyBill / this.pvBill.energyPrice) * months);
     },
     pvBillSavings(years = 1) {
-      return ((this.yearlyBill - this.yearlyPvBill) * years).toFixed();
+      let increasedEnergyBillPrice = 0;
+
+      for (year = 1; year <= years; year++) {
+        increasedEnergyBillPrice += this.yearlyBill + (this.yearlyBill * (this.pvSaving.yearlyIncreaseEnergyPrice / 100));
+      }
+
+      return ((increasedEnergyBillPrice - this.yearlyPvBill) * years).toFixed();
     }
   }
 });
