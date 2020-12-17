@@ -118,7 +118,7 @@ const pvCalculator = Vue.createApp({
         increasedEnergyBillPrice += this.yearlyBill + (this.yearlyBill * (this.pvSaving.yearlyIncreaseEnergyPrice / 100));
       }
 
-      return ((increasedEnergyBillPrice - this.yearlyPvBill) * years).toFixed();
+      return (increasedEnergyBillPrice - this.yearlyPvBill).toFixed();
     }
   }
 });
