@@ -104,7 +104,7 @@ const pvCalculator = Vue.createApp({
     },
     returnOnInvestment() {
       const investmentCost = (this.installationCost != this.installationCostAfterGrant) ? this.installationCostAfterGrant : this.installationCost;
-      return Math.ceil((investmentCost / (parseInt(this.yearlyBill, 10) + parseInt(this.yearlyPvBill, 10))));
+      return Math.round(investmentCost / this.pvBillSavings());
     }
   },
   methods: {
