@@ -15,7 +15,7 @@
   <body class="container">
     <h1 class="text-center h3 m-3">Kalkulator fotowoltaiczny - wyliczenia dla instalacji fotowoltaicznej</h1>
     <div class="col-sm-10 offset-sm-1 text-center alert alert-danger">
-      <strong>Uwaga!</strong> Kalkulator zawiera orientacyjne dane demonstracyjne. Wyliczenia nie powinny być wykorzystywane do wycen. 
+      <strong>Uwaga!</strong> Kalkulator zawiera orientacyjne dane demonstracyjne. Wyliczenia nie powinny być wykorzystywane do wycen.
     </div>
     <div id="pv-calculator" class="row">
       <div class="card-group col-sm-12 col-lg-4">
@@ -144,25 +144,56 @@
           <div class="card bg-light shadow mb-3">
             <div class="card-body text-white">
               <h2 class="card-title h5 pb-1 text-dark">Produkcja energii elektrycznej</h2>
-              <div class="chart">
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 25%"><span class="px-3 text-left">Styczeń</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 35%"><span class="px-3 text-left">Luty</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 50%"><span class="px-3 text-left">Marzec</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 65%"><span class="px-3 text-left">Kwiecień</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 70%"><span class="px-3 text-left">Maj</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 80%"><span class="px-3 text-left">Czerwiec</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 85%"><span class="px-3 text-left">Lipiec</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 75%"><span class="px-3 text-left">Sierpień</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 60%"><span class="px-3 text-left">Wrzesień</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 45%"><span class="px-3 text-left">Październik</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 35%"><span class="px-3 text-left">Listopad</span></div>
-                <div class="progress-bar progress-bar-striped bg-warning my-1" style="width: 25%"><span class="px-3 text-left">Grudzień</span></div>
-              </div>
+              <svg style="position: absolute; top:-170" width="650px" height="500px" viewBox="0 0 500 100">
+                <path id="motionPath" fill="none" stroke-miterlimit="10" d="M100,100Q250,10,400,100" />
+                <g id="sun" transform="translate(-100, -300)">
+                  <circle cx="100" cy="300" r="25" fill="yellow" />
+                </g>
+                <animateMotion xlink:href="#sun" dur="3s" begin="0s" fill="freeze" repeatCount="indefinite">
+                  <mpath xlink:href="#motionPath" />
+                </animateMotion>
+              </svg>
+              <ul class="d-flex align-items-end bar-chart">
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 40%"><span class="px-1">Styczeń</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 45%"><span class="px-1">Luty</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 50%"><span class="px-1">Marzec</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 55%"><span class="px-1">Kwiecień</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 65%"><span class="px-1">Maj</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 70%"><span class="px-1">Czerwiec</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 72%"><span class="px-1">Lipiec</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 65%"><span class="px-1">Sierpień</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 55%"><span class="px-1">Wrzesień</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 50%"><span class="px-1">Październik</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 45%"><span class="px-1">Listopad</span></li>
+                <li class="progress-bar progress-bar-striped bg-warning mx-1" style="height: 40%"><span class="px-1">Grudzień</span></l>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <style>
+      @keyframes grow-column {
+        0% {
+          transform: translateY(100%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .bar-chart {
+        margin: 0;
+        padding: 0;
+        height: 275px;
+        overflow: hidden;
+      }
+      .bar-chart li {
+        animation: grow-column 4s;
+      }
+      .bar-chart li span {
+        transform: rotate(-90deg);
+      }
+    </style>
     <script async defer src="pv-calculator.js"></script>
   </body>
 </html>
