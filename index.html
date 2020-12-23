@@ -35,7 +35,7 @@
               </div>
               <div class="form-group">
                 <label for="operators">Operator</label>
-                <select id="operators" v-model="pvBill.energyPrice" class="form-control form-control-sm">
+                <select id="operators" v-model.number="pvBill.energyPrice" class="form-control form-control-sm">
                   <option v-for="operator in pvBill.operators" :value="operator.energyPrice">
                     {{ operator.name }}
                   </option>
@@ -54,7 +54,7 @@
               <h3 class="card-title h5 pb-1">Parametry instalacji</h3>
               <div class="form-group">
                 <label for="installation-place">Instalacja na</label>
-                <select id="installation-place" v-model="pvParameters.installationTax" class="form-control form-control-sm">
+                <select id="installation-place" v-model.number="pvParameters.installationTax" class="form-control form-control-sm">
                   <option v-for="installation in pvParameters.installationPlace" :value="installation.tax">
                     {{ installation.place }}
                   </option>
@@ -62,7 +62,7 @@
               </div>
               <div class="form-group">
                 <label for="installation-mounted">Konstrukcja montowana na</label>
-                <select id="installation-mounted" v-model="pvParameters.mountedCost" class="form-control form-control-sm">
+                <select id="installation-mounted" v-model.number="pvParameters.mountedCost" class="form-control form-control-sm">
                   <option v-for="mounted in pvParameters.installatioMounted" :value="mounted.cost">
                     {{ mounted.on }}
                   </option>
@@ -70,7 +70,7 @@
               </div>
               <div class="form-group">
                 <label for="installation-orientation">Orientacja instalacji</label>
-                <select id="installation-orientation" v-model="pvParameters.orientationSunProfit" class="form-control form-control-sm">
+                <select id="installation-orientation" v-model.number="pvParameters.orientationSunProfit" class="form-control form-control-sm">
                   <option v-for="orientation in pvParameters.installationOrientation" :value="orientation.sunProfit">
                     {{ orientation.direction }}
                   </option>
@@ -78,7 +78,7 @@
               </div>
               <div class="form-group">
                 <label for="installation-tilt">Nachylenie instalacji</label>
-                <select id="installation-tilt" v-model="pvParameters.installationPerformance" class="form-control form-control-sm">
+                <select id="installation-tilt" v-model.number="pvParameters.installationPerformance" class="form-control form-control-sm">
                   <option v-for="tilt in pvParameters.installationTilt" :value="tilt.performance">
                     {{ tilt.percent }}
                   </option>
